@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: camel-application
+server:
+  port: 8088
+camel:
+  component:
+    rest-api:
+      enabled: true
+  springboot:
+    name: camel-rest

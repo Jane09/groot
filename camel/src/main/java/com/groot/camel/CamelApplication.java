@@ -4,8 +4,10 @@ import org.apache.camel.CamelContext;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ImportResource;
 
 @SpringBootApplication
+@ImportResource("classpath:spring/camel-context.xml")
 public class CamelApplication implements CommandLineRunner {
 
     public static void main(String[] args) {

@@ -9,3 +9,9 @@ camel:
       enabled: true
   springboot:
     name: camel-rest
+cxf:
+  path: /
+service1:
+  path: /MyService1/BookService
+service2:
+  path: /MyService2/BookService

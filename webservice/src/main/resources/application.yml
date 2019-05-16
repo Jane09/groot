@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: webservice
+#  webservices:
+#    path: /services
+#    wsdl-locations: wsdl
+server:
+  port: 9090
+  tomcat:
+    max-threads: 20

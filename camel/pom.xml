@@ -95,6 +95,9 @@
                                 <wsdlOption>
                                     <wsdl>src/main/resources/wsdl/BookService.wsdl</wsdl>
                                 </wsdlOption>
+                                <wsdlOption>
+                                    <wsdl>http://localhost:9090/services/userservice.wsdl?wsdl</wsdl>
+                                </wsdlOption>
                             </wsdlOptions>
                         </configuration>
                         <goals>

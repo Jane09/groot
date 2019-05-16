@@ -3,15 +3,11 @@ spring:
     name: camel-application
 server:
   port: 8088
-camel:
-  component:
-    rest-api:
-      enabled: true
-  springboot:
-    name: camel-rest
 cxf:
   path: /
 service1:
   path: /MyService1/BookService
 service2:
   path: /MyService2/BookService
+userservcie:
+  path: /MyService3/UserService

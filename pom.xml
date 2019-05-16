@@ -12,6 +12,8 @@
         <module>flink</module>
         <module>camel</module>
         <module>tcc</module>
+        <module>webservice</module>
+        <module>camel-servlet</module>
     </modules>
 
     <properties>

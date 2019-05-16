@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.groot.com/UserService"
+        elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:tns="http://www.groot.com/UserService">
+
+    <element name="GetUserByIdResponse">
+        <complexType>
+            <sequence>
+                <element name="username" type="string" maxOccurs="1" minOccurs="1" />
+                <element name="gender" type="string" maxOccurs="1" minOccurs="1" />
+                <element name="birthday" type="date" maxOccurs="1" minOccurs="1" />
+                <element name="location" type="string" maxOccurs="1" minOccurs="1" />
+            </sequence>
+        </complexType>
+    </element>
+
+    <element name="GetUserByIdRequest">
+        <complexType>
+            <sequence>
+                <element name="userId" type="string" minOccurs="1" maxOccurs="1"/>
+            </sequence>
+        </complexType>
+    </element>
+
+
+    <element name="FindUserByIdResponse">
+        <complexType>
+            <sequence>
+                <element name="username" type="string" maxOccurs="1" minOccurs="1" />
+                <element name="gender" type="string" maxOccurs="1" minOccurs="1" />
+                <element name="birthday" type="date" maxOccurs="1" minOccurs="1" />
+                <element name="location" type="string" maxOccurs="1" minOccurs="1" />
+            </sequence>
+        </complexType>
+    </element>
+
+    <element name="FindUserByIdRequest">
+        <complexType>
+            <sequence>
+                <element name="userId" type="string" minOccurs="1" maxOccurs="1"/>
+            </sequence>
+        </complexType>
+    </element>
+</schema>

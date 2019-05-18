@@ -29,7 +29,16 @@ public class ServletRouter extends RouteBuilder {
                 }).log("getUserById")
                     .transform().simple(JSON.toJSONString(new Response<String>(200,"","hello servlet")));
         //TODO 是否能够动态添加
-        
+
     }
 
+
+    public void dynamic(String path) {
+        from("servlet:"+path)
+            .process(new Processor() {
+                public void process(Exchange exchange) throws Exception {
+                    System.out.println("add dynamic route");
+                }
+            }).transform().simple("hello "+path);
+    }
 }

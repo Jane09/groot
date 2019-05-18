@@ -31,14 +31,4 @@ public class ServletRouter extends RouteBuilder {
         //TODO 是否能够动态添加
 
     }
-
-
-    public void dynamic(String path) {
-        from("servlet:"+path)
-            .process(new Processor() {
-                public void process(Exchange exchange) throws Exception {
-                    System.out.println("add dynamic route");
-                }
-            }).transform().simple("hello "+path);
-    }
 }

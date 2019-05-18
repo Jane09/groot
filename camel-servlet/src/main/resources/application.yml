@@ -6,3 +6,8 @@ server:
 camel:
   springboot:
     auto-startup: true
+  component:
+    servlet:
+      mapping:
+        context-path: /camel/*
+        servlet-name: CamelServlet

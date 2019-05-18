@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: camel-servlet
+server:
+  port: 8080
+camel:
+  springboot:
+    auto-startup: true

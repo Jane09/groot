@@ -25,7 +25,7 @@ public class WebServiceClient<Req,Rsp> {
         GetUserByIdResponse response = client.invoke(address,"GetUserById",request,false);
         System.out.println(JSON.toJSONString(response));
         //解决的问题，根据wsdl生成实体类
-        
+
     }
 
     /**

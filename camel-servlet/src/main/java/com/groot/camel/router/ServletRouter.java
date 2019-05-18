@@ -1,8 +1,7 @@
 package com.groot.camel.router;
 
 import com.alibaba.fastjson.JSON;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
+import com.groot.camel.common.Response;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
@@ -28,13 +27,9 @@ public class ServletRouter extends RouteBuilder {
                         System.out.println(JSON.toJSONString(message.getRequest().getParameterMap()));
                     }
                 }).log("getUserById")
-                    .transform().simple(JSON.toJSONString(new Response(200,"hello servlet")));
+                    .transform().simple(JSON.toJSONString(new Response<String>(200,"","hello servlet")));
+        //TODO 是否能够动态添加
+        
     }
 
-    @AllArgsConstructor
-    @Getter
-    public class Response {
-        private int status = 200;
-        private Object data;
-    }
 }

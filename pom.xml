@@ -16,6 +16,7 @@
         <module>camel-servlet</module>
         <module>dict-design</module>
         <module>hystrix</module>
+        <module>conductor</module>
     </modules>
 
     <properties>

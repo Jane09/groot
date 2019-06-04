@@ -11,5 +11,59 @@
 
     <artifactId>conductor</artifactId>
 
+    <properties>
+        <conductor.version>2.12.3</conductor.version>
+    </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.netflix.conductor</groupId>
+            <artifactId>conductor-client</artifactId>
+            <version>${conductor.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.github.vmg.protogen</groupId>
+                    <artifactId>protogen-annotations</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.github.vmg.protogen</groupId>
+            <artifactId>protogen-annotations</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring.boot.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+    <repositories>
+        <repository>
+            <id>jcenter</id>
+            <name>Maven Aliyun Mirror</name>
+            <url>http://jcenter.bintray.com/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
 </project>

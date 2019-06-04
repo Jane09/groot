@@ -1,0 +1,29 @@
+{
+  "name": "simple_demo",
+  "description": "A simple conductor demo",
+  "version": 1,
+  "tasks": [
+    {
+      "name": "bw1",
+      "taskReferenceName": "bw1",
+      "type": "SIMPLE",
+      "inputParameters": {
+        "a1": "${workflow.input.a}"
+      }
+    },
+    {
+      "name": "bw2",
+      "taskReferenceName": "bw2",
+      "type": "SIMPLE",
+      "inputParameters": {
+        "b1": "${bw1.output.aa}"
+      }
+    }
+  ],
+  "outputParameters": {
+    "cc": "${bw2.output.bb}"
+  },
+  "restartable": true,
+  "workflowStatusListenerEnabled": true,
+  "schemaVersion": 2
+}

@@ -1,0 +1,38 @@
+[
+  {
+    "name": "bw1",
+    "retryCount": 3,
+    "timeoutSeconds": 3600,
+    "inputKeys": [
+      "a1"
+    ],
+    "outputKeys": [
+      "aa"
+    ],
+    "timeoutPolicy": "TIME_OUT_WF",
+    "retryLogic": "FIXED",
+    "retryDelaySeconds": 600,
+    "responseTimeoutSeconds": 3600,
+    "concurrentExecLimit": 100,
+    "rateLimitFrequencyInSeconds": 60,
+    "rateLimitPerFrequency": 50
+  },
+  {
+    "name": "bw2",
+    "retryCount": 3,
+    "timeoutSeconds": 1200,
+    "inputKeys": [
+      "b1"
+    ],
+    "outputKeys": [
+      "bb"
+    ],
+    "timeoutPolicy": "TIME_OUT_WF",
+    "retryLogic": "FIXED",
+    "retryDelaySeconds": 3600,
+    "responseTimeoutSeconds": 3600,
+    "concurrentExecLimit": 100,
+    "rateLimitFrequencyInSeconds": 60,
+    "rateLimitPerFrequency": 50
+  }
+]

@@ -17,6 +17,7 @@
         <module>dict-design</module>
         <module>hystrix</module>
         <module>conductor</module>
+        <module>knowledge</module>
     </modules>
 
     <properties>

@@ -8,7 +8,9 @@ import org.apache.axis2.AxisFault;
 import org.apache.axis2.addressing.EndpointReference;
 import org.apache.axis2.client.Options;
 import org.apache.axis2.client.ServiceClient;
+import org.apache.axis2.rpc.client.RPCServiceClient;
 
+import javax.xml.namespace.QName;
 import javax.xml.transform.Result;
 
 public class Axis2Demo {
@@ -27,6 +29,10 @@ public class Axis2Demo {
         OMElement result = client.sendReceive(method);
         System.out.println(result);
         test();
+
+        rpc();
+
+        rpc2();
     }
 
     public static void test(){
@@ -65,5 +71,59 @@ public class Axis2Demo {
     } catch(AxisFault axisFault) {
         axisFault.printStackTrace();
     }
+    }
+
+    public static void rpc() throws AxisFault {
+        RPCServiceClient serviceClient = new RPCServiceClient();
+        // 创建WSDL的URL，注意不是服务地址
+        String url = "http://ws.webxml.com.cn/WebServices/MobileCodeWS.asmx?wsdl";
+        // 指定调用WebService的URL
+        EndpointReference targetEPR = new EndpointReference(url);
+        Options options = serviceClient.getOptions();
+        // 确定目标服务地址
+        options.setTo(targetEPR);
+        // 确定调用方法（wsdl 命名空间地址 (wsdl文档中的targetNamespace) 和 方法名称 的组合）
+        options.setAction("http://WebXml.com.cn/getMobileCodeInfo");
+        // 指定方法的参数值
+        Object[] parameters = new Object[] {"13601685138", ""};
+
+        // 创建服务名称
+        // 1.namespaceURI - 命名空间地址 (wsdl文档中的targetNamespace)
+        // 2.localPart - 服务视图名 (wsdl文档中operation的方法名称，例如<wsdl:operation name="getMobileCodeInfo">)
+        QName qname = new QName("http://WebXml.com.cn/", "getMobileCodeInfo");
+        // 调用方法一 传递参数，调用服务，获取服务返回结果集
+        OMElement element = serviceClient.invokeBlocking(qname, parameters);
+        System.out.println(element);
+        /*
+         * 值得注意的是，返回结果就是一段由OMElement对象封装的xml字符串。
+         * 我们可以对之灵活应用,下面我取第一个元素值，并打印之。因为调用的方法返回一个结果
+         */
+        String result = element.getFirstElement().getText();
+        System.out.println(result);
+
+        // 调用方法二 getPrice方法并输出该方法的返回值
+        // 指定方法返回值的数据类型的Class对象
+        Class[] returnTypes = new Class[] {String.class};
+        Object[] response = serviceClient.invokeBlocking(qname, parameters, returnTypes);
+        String r = (String) response[0];
+        System.out.println(r);
+    }
+
+
+    public static void rpc2() throws AxisFault {
+//使用RPC方式调用WebService
+        RPCServiceClient serviceClient = new RPCServiceClient();
+        Options options = serviceClient.getOptions();
+        //指定调用WebService的URL
+        EndpointReference targetEPR =
+                new EndpointReference("http://ws.webxml.com.cn/WebServices/WeatherWS.asmx?wsdl");
+        options.setTo(targetEPR);
+        options.setAction("http://WebXml.com.cn/getRegionProvince");
+        //指定方法的参数值
+        Object[] opAddEntryArgs = new Object[] {};
+        //指定要调用的方法及WSDL文件的命名空间
+        QName opAddEntry = new QName("http://WebXml.com.cn/", "getRegionProvince");
+        //调用法并输出该方法的返回值
+        System.out.println(serviceClient.invokeBlocking(opAddEntry, opAddEntryArgs));
     }
 }

@@ -16,19 +16,19 @@ import javax.xml.transform.Result;
 public class Axis2Demo {
 
     public static void main(String[] args) throws AxisFault {
-        ServiceClient client = new ServiceClient();
-        String url = "http://ws.webxml.com.cn/WebServices/WeatherWS.asmx";
-        EndpointReference targetEPR = new EndpointReference(url);
-        Options options = client.getOptions();
-        options.setTo(targetEPR);
-        options.setAction("http://WebXml.com.cn/getRegionProvince");
-        OMFactory factory = OMAbstractFactory.getOMFactory();
-        OMNamespace namespace = factory.createOMNamespace("http://WebXml.com.cn/","");
-        OMElement method = factory.createOMElement("getSupportCityDataset",namespace);
-        method.build();
-        OMElement result = client.sendReceive(method);
-        System.out.println(result);
-        test();
+//        ServiceClient client = new ServiceClient();
+//        String url = "http://ws.webxml.com.cn/WebServices/WeatherWS.asmx";
+//        EndpointReference targetEPR = new EndpointReference(url);
+//        Options options = client.getOptions();
+//        options.setTo(targetEPR);
+//        options.setAction("http://WebXml.com.cn/getRegionProvince");
+//        OMFactory factory = OMAbstractFactory.getOMFactory();
+//        OMNamespace namespace = factory.createOMNamespace("http://WebXml.com.cn/","");
+//        OMElement method = factory.createOMElement("getSupportCityDataset",namespace);
+//        method.build();
+//        OMElement result = client.sendReceive(method);
+//        System.out.println(result);
+//        test();
 
         rpc();
 
@@ -76,21 +76,21 @@ public class Axis2Demo {
     public static void rpc() throws AxisFault {
         RPCServiceClient serviceClient = new RPCServiceClient();
         // 创建WSDL的URL，注意不是服务地址
-        String url = "http://ws.webxml.com.cn/WebServices/MobileCodeWS.asmx?wsdl";
+        String url = "http://127.0.0.1:8888/hello?wsdl";
         // 指定调用WebService的URL
         EndpointReference targetEPR = new EndpointReference(url);
         Options options = serviceClient.getOptions();
         // 确定目标服务地址
         options.setTo(targetEPR);
         // 确定调用方法（wsdl 命名空间地址 (wsdl文档中的targetNamespace) 和 方法名称 的组合）
-        options.setAction("http://WebXml.com.cn/getMobileCodeInfo");
+        options.setAction("http://127.0.0.1:8888/hello/sayHello");
         // 指定方法的参数值
-        Object[] parameters = new Object[] {"13601685138", ""};
+        Object[] parameters = new Object[] {"tom"};
 
         // 创建服务名称
         // 1.namespaceURI - 命名空间地址 (wsdl文档中的targetNamespace)
         // 2.localPart - 服务视图名 (wsdl文档中operation的方法名称，例如<wsdl:operation name="getMobileCodeInfo">)
-        QName qname = new QName("http://WebXml.com.cn/", "getMobileCodeInfo");
+        QName qname = new QName("http://127.0.0.1:8888/hello/", "sayHello");
         // 调用方法一 传递参数，调用服务，获取服务返回结果集
         OMElement element = serviceClient.invokeBlocking(qname, parameters);
         System.out.println(element);

@@ -50,6 +50,6 @@ public class WsParser {
         message.getSOAPPart().setContent(new SAXSource(new InputSource(new StringReader(send))));
         System.out.println(message.getSOAPBody());
 
-        System.out.println(XML.toJSONObject(send));;
+//        System.out.println(XML.toJSONObject(send));;
     }
 }
